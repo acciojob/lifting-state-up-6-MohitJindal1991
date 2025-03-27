@@ -23,6 +23,8 @@ const App = () => {
   return (
     <div>
       {/* Do not remove the main div */}
+    <h1>Parent Component</h1>
+    <h3>Child Component</h3>
       <ul>
         {todolist.map((ele) => (
           <Todo key={ele.id} isCompleted={ele.completed} task={ele.task} />
