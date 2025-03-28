@@ -1,16 +1,12 @@
 import React from "react";
-import { useState } from "react";
+
 function Todo(props) {
-  const [display, setDisplay] = useState(props.isCompleted);
-  function clickHandler() {
-    setDisplay(false);
-  }
   return (
-    <li>
+    <li id={props.id}>
       <p>{props.task}</p>
-      {display && <button onClick={clickHandler}>Completed</button>}
+      {!props.isCompleted && <button onClick={props.handler}>Mark</button>}
     </li>
   );
 }
-export default Todo;
 
+export default Todo;
