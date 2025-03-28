@@ -1,33 +1,37 @@
-import React from "react";
-import './../styles/App.css';
+import React, { useState } from "react";
+import "./styles.css";
 import Todo from "./Todo.jsx";
 
 const App = () => {
-  const todolist = [
-    {
-      id: "1",
-      task: "Learn React",
-      completed: "false",
-    },
-    {
-      id: "2",
-      task: "Build a React App",
-      completed: "false",
-    },
-    {
-      id: "3",
-      task: "Deploy a React App",
-      completed: "false",
-    },
+  const initialTodos = [
+    { id: "1", task: "Learn React", completed: false },
+    { id: "2", task: "Build a React App", completed: false },
+    { id: "3", task: "Deploy a React App", completed: false },
   ];
+
+  const [todos, setTodos] = useState(initialTodos);
+
+  function clickHandler(id) {
+    setTodos((prevTodos) =>
+      prevTodos.map((todo) =>
+        todo.id === id ? { ...todo, completed: true } : todo
+      )
+    );
+  }
+
   return (
     <div>
-      {/* Do not remove the main div */}
-    <h1>Parent Component</h1>
-    <h3>Child Component</h3>
+      <h1>Parent Component</h1>
+      <h2>Child Component</h2>
       <ul>
-        {todolist.map((ele) => (
-          <Todo key={ele.id} isCompleted={ele.completed} task={ele.task} />
+        {todos.map((ele) => (
+          <Todo
+            key={ele.id}
+            id={ele.id}
+            isCompleted={ele.completed}
+            handler={() => clickHandler(ele.id)} // Pass ID to handler
+            task={ele.task}
+          />
         ))}
       </ul>
     </div>
