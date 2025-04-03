@@ -10,7 +10,7 @@ const App = () => {
 
   const [todos, setTodos] = useState(initialTodos);
 
-  function clickHandler(id) {
+  function handleComplete(id) {
     setTodos((prevTodos) =>
       prevTodos.map((todo) =>
         todo.id === id ? { ...todo, completed: true } : todo
@@ -28,7 +28,7 @@ const App = () => {
             key={ele.id}
             id={ele.id}
             isCompleted={ele.completed}
-            handler={() => clickHandler(ele.id)} // Pass ID to handler
+            handler={() => handleComplete(ele.id)} // Pass ID to handler
             task={ele.task}
           />
         ))}
