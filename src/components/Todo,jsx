@@ -4,7 +4,7 @@ function Todo(props) {
   return (
     <li id={props.id}>
       <p>{props.task}</p>
-      {!props.isCompleted && <button onClick={props.handler}>Mark</button>}
+      {!props.isCompleted && <button onClick={props.handleComplete}>Complete</button>}
     </li>
   );
 }
